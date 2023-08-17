@@ -1,0 +1,62 @@
+class Node{
+    int value;
+    Node next;
+    Node(int number){
+        value = number;
+    }
+}
+
+class LinkedList{
+    Node head;
+
+    void insertAtPos(int pos,int number){
+    Node newNode =  new Node(number);
+    if(pos==1){
+        newNode.next = head;
+        head = newNode;
+    }else{
+        Node curr = head;
+      for(int i = 1;i<pos-1;i++){
+            curr = curr.next;
+      }
+      Node nextNode = curr.next;
+      curr.next = newNode;
+      newNode.next = nextNode;
+           
+        }
+    }
+    void deleteAtPos(int position){
+        if(position==1){
+            head = head.next;
+        }
+        else{
+            Node curr = head;
+            for(int i=1; i<position-1;i++){
+                curr = curr.next;
+            }
+            curr.next = curr.next.next;
+        }
+    }
+    
+    void print(){
+        Node curr = head;
+        while(curr!=null){
+            System.out.print(curr.value+" ");
+            curr = curr.next;
+        }
+    }
+}
+class Main{
+    public static void main(String args[]){
+        LinkedList l1 = new LinkedList();
+        l1.insertAtPos(1,23);
+        l1.insertAtPos(2,30);
+        l1.insertAtPos(3,40);
+        l1.insertAtPos(1,111);
+        l1.print();
+        System.out.println();
+         l1.deleteAtPos(2);
+        l1.deleteAtPos(3);
+          l1.print();
+    }
+}
