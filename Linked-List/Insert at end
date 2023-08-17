@@ -11,14 +11,14 @@ class LinkedList{
 
     void insertAtEnd(int number){
     Node newNode =  new Node(number);
-    if(head==null){
+    if(head==null){                               //inserting first node
         head =  newNode;
     }else{
-        Node curr = head;
-        while(curr.next!=null){
+        Node curr = head;                         //loop to reach last node
+        while(curr.next!=null){           //how to fid last node => last node.next will be null.
             curr = curr.next;
         }
-        curr.next = newNode;
+        curr.next = newNode;      // insert once you reach the last node.
     }
     }
     void print(){
