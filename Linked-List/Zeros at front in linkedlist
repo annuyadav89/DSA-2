@@ -1,0 +1,31 @@
+static public Node moveZeroes(Node head)
+{
+Node zeroHead = new Node(-1);
+Node nonZeroHead = new Node(-1);
+Node zero = zeroHead;
+Node nonZero = nonZeroHead;
+
+Node curr = head;
+while(curr!=null){
+    if(curr.data==0){
+        zero.next = curr;
+        zero = zero.next;
+    }else{
+        nonZero.next = curr;
+        nonZero = nonZero.next;
+    }
+    curr = curr.next;
+}
+zero.next = null;
+nonZero.next = null;
+      
+zeroHead = zeroHead.next;     // delete -1 from zeroHead list.
+nonZeroHead = nonZeroHead.next;  /// delete -1 from nonzerohead list.
+
+if(zeroHead==null){     \\  make a connection
+    return nonZeroHead;
+}else{
+    zero.next = nonZeroHead;
+    return zeroHead;
+}
+}
