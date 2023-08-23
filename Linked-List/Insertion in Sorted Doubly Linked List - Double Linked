@@ -1,0 +1,21 @@
+static Node sortedInsertion(Node head, Node newNode){
+    if(newNode.data<= head.data){
+        newNode.next = head;
+        head.prev = newNode;       //Doubly linkedlist make insertion
+        head = newNode;
+    }else{
+        Node curr = head;
+        while(curr.next!=null && curr.next.data < newNode.data){
+            curr = curr.next;
+        }
+        
+        Node nextNode = curr.next;
+        curr.next = newNode;
+        newNode.next = nextNode;
+        newNode.prev = curr;            ////Doubly linkedlist  make insertion
+        if(nextNode!=null){              //Doubly linkedlist  make insertion
+            nextNode.prev = newNode; 
+        }
+    }
+    return head;
+}
